@@ -1,0 +1,70 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js dev
+
+PATH: 
+  /Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  8.11.1
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "private": true,
+    "name": "labVue",
+    "productName": "labVue",
+    "description": "My sweet Vue project",
+    "version": "0.0.0",
+    "license": "MIT",
+    "scripts": {
+      "dev": "poi",
+      "build": "poi build",
+      "report": "poi build --bundle-report",
+      "serve": "serve dist --single",
+      "test": "tyu"
+    },
+    "author": {
+      "name": "JohanssonJonathan",
+      "email": "jjohanssonjonathan@gmail.com"
+    },
+    "dependencies": {
+      "offline-plugin": "^4.8.0",
+      "normalize.css": "^7.0.0",
+      "object-assign": "^4.1.1",
+      "promise-polyfill": "^6.0.2"
+    },
+    "devDependencies": {
+      "poi": "^9.0.0",
+      "poi-preset-bundle-report": "^2.0.0",
+      "serve": "^6.1.0",
+      "tyu": "^1.0.4",
+      "poi-preset-offline": "^9.0.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: Command failed.
+  Exit code: 1
+  Command: sh
+  Arguments: -c poi
+  Directory: /Users/jonathan/Hemsidor/Github/labVue/labVue
+  Output:
+  
+      at ProcessTermError.MessageError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:186:110)
+      at new ProcessTermError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:226:113)
+      at ChildProcess.<anonymous> (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:30281:17)
+      at emitTwo (events.js:126:13)
+      at ChildProcess.emit (events.js:214:7)
+      at maybeClose (internal/child_process.js:925:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)
