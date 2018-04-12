@@ -1,44 +1,114 @@
 <template>
   <div id="app">
-    <div class="banner">
-      <img
-        src="https://vuejs.org/images/logo.png"
-        width="100"
-        alt="vue"
-        class="logo"
-      />
-      <h1>Welcome to Vue.js</h1>
-    </div>
-    <div class="bottom">
-      To get started, edit <code>./src/components/App.vue</code> and save to reload.<br/>
-      <span class="fade">
-        Checkout <code>./README.md</code> for more usages.
-      </span>
+    <h5 id="headText">Create your own music list below</h5>
+
+    <div>
+      <add-song v-on:addNewSong="updateList($event)"></add-song>
+      <!--<add-song> v-for="song in songList"</add-song>  -->
+      <show-info v-bind:moreInfo="moreInfo" ref="form"></show-info>
+      <song-list v-bind:list="list"  v-on:showInfo="showInfo($event)"></song-list>
     </div>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'app'
-  }
+import AddSong from './AddSong.vue';
+import ShowInfo from './showInfo.vue';
+import SongList from './SongList.vue';
+
+export default {
+  name: "add",
+  components: {
+    "add-song": AddSong,
+    "show-info": ShowInfo,
+    "song-list": SongList,
+  },
+  data: function() {
+    return {
+        list :[],
+        moreInfo:{},
+    }
+  }, //data
+  methods: {
+    updateList: function(e){
+
+      this.list.unshift({
+        songName: e.songName,
+        songGenre: e.songGenre,
+        songYear: e.songYear,
+        imageUrl: e.imageUrl
+      });
+
+      this.moreInfo.songName = e.songName;
+      this.moreInfo.songGenre = e.songGenre;
+      this.moreInfo.songYear = e.songYear;
+      this.moreInfo.imageUrl = e.imageUrl;
+      this.$refs.form.showObj()
+
+
+    },
+    showInfo: function(i){
+
+      if(i !== "" && i !== undefined){
+        this.moreInfo.songName = i.songName;
+        this.moreInfo.songGenre = i.songGenre;
+        this.moreInfo.songYear = i.songYear;
+        this.moreInfo.imageUrl = i.imageUrl;
+        this.$refs.form.showObj()
+
+      }else{
+        this.moreInfo.songName = "";
+        this.moreInfo.songGenre = "";
+        this.moreInfo.songYear = "";
+        this.moreInfo.imageUrl = "";
+        this.$refs.form.showObj()
+
+      }
+
+
+
+
+    },
+
+  }, //methods
+}
 </script>
 
 <!-- CSS libraries -->
+
 <style src="normalize.css/normalize.css"></style>
 
 <!-- Global CSS -->
 <style>
-  code {
-    font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
-    font-size: 0.9em;
-    white-space: pre-wrap;
-    color: #2c3e50;
+
+  *{
+    margin:0;
+    padding: 0;
+  }
+  @import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans');
+
+  body{
+    font-family: 'Montserrat', sans-serif;
+    /* background: rgba(76, 59, 87,0.8); */
+    /* background: rgba(251, 225, 182,0.6); */
+
   }
 
-  code::before, code::after {
-    content: '`';
+  h5#headText{
+    color:black;
+    display: inline-block;
+    /* border-bottom: 2px solid rgb(40, 83, 102); */
+    text-align: center;
+    position: relative;
+    top:40px;
+    width:300px;
+    font-size: 0.8em;
+    padding:10px 0px;
+    z-index: 2;
   }
+
+
+
 </style>
 
 <!-- Scoped component css -->
@@ -47,6 +117,8 @@
   #app {
     text-align: center;
   }
+
+
 
   #app h1 {
     color: #2c3e50;
