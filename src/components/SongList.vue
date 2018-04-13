@@ -6,8 +6,8 @@
     <tr>
 
       <td class="musicList">Title</td>
-      <td class="musicList">Artist</td>
       <td class="musicList">Genre</td>
+      <td class="musicList">Year</td>
       <td></td>
       <!-- <td></td> -->
 
@@ -216,4 +216,5 @@ input {
   display: inline;
   margin-right: 5px;
 }
+
 </style>

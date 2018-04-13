@@ -24,7 +24,7 @@ export default {
   data: function() {
 
     return {
-      fill: "",
+      fill:"",
       bool: true,
       showAddSong: false,
       songList: [],
@@ -49,7 +49,7 @@ export default {
         this.bool = false;
 
       }
-      this.fill = "";
+      this.fill = ""
     },
     publish: function() {
 
@@ -65,6 +65,7 @@ export default {
         this.fill = "You missed to fill out the form";
       }
     }
+
 
 
   }
