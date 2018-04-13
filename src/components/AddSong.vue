@@ -2,7 +2,11 @@
   <div class="addContent">
 
 		<button v-if="bool" v-on:click="showAdd" class="add">Add Song</button>
-    <button v-else v-on:click="publish" class="add">Publish</button>
+    <div v-else class="add">
+      <button  v-on:click="publish" class="add">Publish</button>
+      <h3 id="x" @click="showAdd">x</h3>
+    </div>
+
 
     <div v-if="showAddSong" class="showAddSong">
       <input type="text" placeholder="Song name..." v-model="currentSong.songName">
@@ -12,7 +16,10 @@
 
 
     </div>
+    <h4 id="fill">{{fill}}</h4>
+
 	</div>
+
 </template>
 
 <script>
@@ -20,6 +27,7 @@ export default {
   data : function(){
 
     return {
+      fill:"",
       bool: true,
       showAddSong: false,
       songList: [],
@@ -45,21 +53,25 @@ export default {
         this.bool = false;
 
       }
-
+      this.fill = ""
     },
     publish: function(){
 
       if (this.currentSong.songName != "" && this.currentSong.songGenre != "" && this.currentSong.songYear != "" && this.currentSong.imageUrl != "") {
         this.$emit("addNewSong", this.currentSong)
-        this.showAdd();
+        // this.showAdd();
         this.currentSong.songName = "";
         this.currentSong.songGenre = "";
         this.currentSong.songYear = "";
         this.currentSong.imageUrl = "";
+        this.fill = ""
+
       } else {
         console.log("you missed to fill out the form")
+        this.fill = "You missed to fill out the form"
       }
     }
+
 
 
   }
@@ -81,7 +93,7 @@ div.addContent{
 div.showAddSong{
   position: absolute;
   top:60px;
-  width: 60%;
+  width: 75%;
   margin: 0 auto;
   right: 0;
   left:0;
@@ -92,15 +104,34 @@ div.showAddSong{
   border-bottom:3px solid rgb(5, 159, 92);
 }
 
+#x{
+  position: absolute;
+  right: -350px;
+  z-index: 10;
+  width: 20px;
+  height: 20px;
+  bottom:5px;
+  color: rgba(0,0,0,0.6);
+  cursor: pointer;
+}
+#fill{
+  position: absolute;
+  top:130px;
+}
+
 div.showAddSong input{
   z-index: 5;
   width:10%;
   margin:10px  ;
   border:none;
-  font-size: 0.8em;
+  font-size: 0.9em;
   text-align: center;
   padding:5px;
 
+}
+
+.add{
+  position: relative;
 }
 
 ::placeholder {

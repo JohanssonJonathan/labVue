@@ -6,8 +6,8 @@
     <tr>
 
       <td class="musicList">Title</td>
-      <td class="musicList">Artist</td>
       <td class="musicList">Genre</td>
+      <td class="musicList">Year</td>
       <td></td>
       <!-- <td></td> -->
 
@@ -17,8 +17,13 @@
       <!-- <td>{{i.songName}}</td>
       <td>{{i.songGenre}}</td>
       <td>{{i.songYear}}</td> -->
+      <div class="nr">
+        {{index+1}}:
+      </div>
       <div class="view">
+
         {{i.songName}}
+
       </div>
       <div class="edit">
         <input type="text" v-model="i.songName" />
@@ -42,12 +47,12 @@
       </td>
       <td>
         <div class="view">
-          <button @click="editData(i)">edit</button>
+          <img src="../../static/icons/edit.svg" @click="editData(i)" id="editBtn"/>
         </div>
         <div class="edit">
-          <button @click="saveData(i)">save</button>
+          <img src="../../static/icons/checked.svg" @click="saveData(i)" class="deleteInfo"/>
         </div>
-        <button class="deleteInfo" @click="removeData(i,index)">delete</button>
+        <img src="../../static/icons/rubbish-bin.svg" class="deleteInfo" @click="removeData(i,index)"/>
       </td>
     </tr>
   </table>
@@ -142,11 +147,15 @@ body {
   position: relative;
   top:160px;
   float: right;
-  width: 40%;
   right: 0;
   margin: 0;
   padding: 0;
 
+}
+.nr{
+  position: absolute;
+  left:0;
+  font-size: 0.9em;
 }
 
 .DivList ul{
@@ -160,18 +169,24 @@ body {
 }
 
 table{
+  position: relative;
   color:rgba(0,0,0,0.7);
-  padding: 5px 0px;
-  width: 100%;
-
+  width: 600px;
+    right: 30px;
 }
 .musicList{
   border-bottom: 2px solid rgba(0,0,0,0.6);
 
 }
-td{
-  width:50px;
+
+tr div{
+
 }
+
+td{
+  width:10px;
+}
+
 </style>
 
 <!-- Scoped component css -->
@@ -194,7 +209,16 @@ td{
 }
 
 input {
-  width:100px;
+  width:70px;
+  margin:0;
+
+}
+
+#editBtn, .deleteInfo{
+  float:right;
+  width:20px;
+  display:inline;
+  margin-right: 5px;
 }
 
 button {
@@ -217,14 +241,7 @@ button:hover {
   text-decoration: none;
 }
 
-.deleteInfo {
-  background: #ed1d20;
-  background-image: -webkit-linear-gradient(top, #ed1d20, #db515c);
-  background-image: -moz-linear-gradient(top, #ed1d20, #db515c);
-  background-image: -ms-linear-gradient(top, #ed1d20, #db515c);
-  background-image: -o-linear-gradient(top, #ed1d20, #db515c);
-  background-image: linear-gradient(to bottom, #ed1d20, #db515c);
-}
+
 button.deleteInfo:hover {
   background: #ff0000;
   text-decoration: none;
