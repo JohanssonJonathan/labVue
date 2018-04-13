@@ -221,29 +221,4 @@ input {
   margin-right: 5px;
 }
 
-button {
-  background: #059f5c;
-  background-image: -webkit-linear-gradient(top, #059f5c, #1cc446);
-  background-image: -moz-linear-gradient(top, #059f5c, #1cc446);
-  background-image: -ms-linear-gradient(top, #059f5c, #1cc446);
-  background-image: -o-linear-gradient(top, #059f5c, #1cc446);
-  background-image: linear-gradient(to bottom, #059f5c, #1cc446);
-  border-radius: 12px;
-  color: #000000;
-  width: 70px;
-  padding: 2px 5px 2px 5px;
-  text-decoration: none;
-  float:right;
-}
-
-button:hover {
-  background: #18d911;
-  text-decoration: none;
-}
-
-
-button.deleteInfo:hover {
-  background: #ff0000;
-  text-decoration: none;
-}
 </style>
