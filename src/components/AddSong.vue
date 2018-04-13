@@ -1,74 +1,68 @@
 <template>
-  <div class="addContent">
+<div class="addContent">
 
-		<button v-if="bool" v-on:click="showAdd" class="add">Add Song</button>
-    <div v-else class="add">
-      <button  v-on:click="publish" class="add">Publish</button>
-      <h3 id="x" @click="showAdd">x</h3>
-    </div>
+  <button v-if="bool" v-on:click="showAdd" class="add">Add Song</button>
+  <div v-else class="add">
+    <button v-on:click="publish" class="add">Publish</button>
+    <h3 id="x" @click="showAdd">x</h3>
+  </div>
+
+  <div v-if="showAddSong" class="showAddSong">
+    <input type="text" placeholder="Song title..." v-model="currentSong.songTitle">
+    <input type="text" placeholder="Artist..." v-model="currentSong.songArtist">
+    <input type="text" placeholder="Genre..." v-model="currentSong.songGenre">
+    <input type="text" placeholder="Image URL" v-model="currentSong.imageUrl">
 
 
-    <div v-if="showAddSong" class="showAddSong">
-      <input type="text" placeholder="Song name..." v-model="currentSong.songName">
-      <input type="text" placeholder="Genre..." v-model="currentSong.songGenre">
-      <input type="text" placeholder="Release year..." v-model="currentSong.songYear">
-      <input type="text" placeholder="Image URL" v-model="currentSong.imageUrl">
-
-
-    </div>
-    <h4 id="fill">{{fill}}</h4>
-
-	</div>
-
+  </div>
+  <h4 id="fill">{{fill}}</h4>
+</div>
 </template>
 
 <script>
 export default {
-  data : function(){
+  data: function() {
 
     return {
       fill:"",
       bool: true,
       showAddSong: false,
       songList: [],
-      currentSong : {
-        songName: "",
+      currentSong: {
+        songTitle: "",
+        songArtist: "",
         songGenre: "",
-        songYear: "",
         imageUrl: ""
       }
     }
 
   },
-  methods : {
+  methods: {
 
-    showAdd : function(){
+    showAdd: function() {
 
-      if(this.showAddSong){
+      if (this.showAddSong) {
         this.showAddSong = false;
         this.bool = true;
-      }
-      else{
+      } else {
         this.showAddSong = true;
         this.bool = false;
 
       }
       this.fill = ""
     },
-    publish: function(){
+    publish: function() {
 
-      if (this.currentSong.songName != "" && this.currentSong.songGenre != "" && this.currentSong.songYear != "" && this.currentSong.imageUrl != "") {
+      if (this.currentSong.songTitle != "" && this.currentSong.songArtist != "" && this.currentSong.songGenre != "" && this.currentSong.imageUrl != "") {
         this.$emit("addNewSong", this.currentSong)
-        // this.showAdd();
-        this.currentSong.songName = "";
+        this.showAdd();
+        this.currentSong.songTitle = "";
+        this.currentSong.songArtist = "";
         this.currentSong.songGenre = "";
-        this.currentSong.songYear = "";
         this.currentSong.imageUrl = "";
-        this.fill = ""
-
+        this.fill = "";
       } else {
-        console.log("you missed to fill out the form")
-        this.fill = "You missed to fill out the form"
+        this.fill = "You missed to fill out the form";
       }
     }
 

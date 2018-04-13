@@ -14,20 +14,23 @@
     </tr>
 
     <tr v-for="(i,index) in list" @click="show(i)" :class="{editing: i == editedList}">
-      <!-- <td>{{i.songName}}</td>
-      <td>{{i.songGenre}}</td>
-      <td>{{i.songYear}}</td> -->
-      <div class="nr">
-        {{index+1}}:
-      </div>
+      <!-- <td>{{i.songTitle}}</td>
+      <td>{{i.songArtist}}</td>
+      <td>{{i.songGenre}}</td> -->
       <div class="view">
-
-        {{i.songName}}
-
+        {{i.songTitle}}
       </div>
       <div class="edit">
-        <input type="text" v-model="i.songName" />
+        <input type="text" v-model="i.songTitle" />
       </div>
+      </td>
+      <td>
+        <div class="view">
+          {{i.songArtist}}
+        </div>
+        <div class="edit">
+          <input type="text" v-model="i.songArtist" />
+        </div>
       </td>
       <td>
         <div class="view">
@@ -39,20 +42,12 @@
       </td>
       <td>
         <div class="view">
-          {{i.songYear}}
+          <img src="../../static/icons/edit.svg" @click="editData(i)" id="editBtn" />
         </div>
         <div class="edit">
-          <input type="text" v-model="i.songYear" />
+          <img src="../../static/icons/checked.svg" @click="saveData(i)" class="deleteInfo" />
         </div>
-      </td>
-      <td>
-        <div class="view">
-          <img src="../../static/icons/edit.svg" @click="editData(i)" id="editBtn"/>
-        </div>
-        <div class="edit">
-          <img src="../../static/icons/checked.svg" @click="saveData(i)" class="deleteInfo"/>
-        </div>
-        <img src="../../static/icons/rubbish-bin.svg" class="deleteInfo" @click="removeData(i,index)"/>
+        <img src="../../static/icons/rubbish-bin.svg" class="deleteInfo" @click="removeData(i,index)" />
       </td>
     </tr>
   </table>
@@ -75,7 +70,7 @@ export default {
     return {
       // editMode: false,
       editedList: null,
-      hej: true,
+      showInformation: true,
     }
   }, //data
   methods: {
@@ -89,38 +84,38 @@ export default {
       this.editedList = i;
     },
 
-    show(i){
+    show(i) {
 
-      if(this.hej){
-        this.$emit("showInfo",i)
+      if (this.showInformation) {
+        this.$emit("showInfo", i)
 
         console.log("show")
       }
 
-      this.hej = true;
+      this.showInformation = true;
 
 
     },
-    removeData(i,index) {
+    removeData(i, index) {
       console.log("delete")
 
-      this.hej = false;
+      this.showInformation = false;
 
 
-        this.list.splice(index, 1);
+      this.list.splice(index, 1);
 
-      if(this.list.length ===0){
+      if (this.list.length === 0) {
         this.$emit("showInfo", "")
 
       }
 
-        if(index ===0){
-          this.$emit("showInfo", this.list[index])
+      if (index === 0) {
+        this.$emit("showInfo", this.list[index])
 
-        }else{
-          this.$emit("showInfo", this.list[index-1])
+      } else {
+        this.$emit("showInfo", this.list[index - 1])
 
-        }
+      }
 
     },
   } //methods
@@ -209,15 +204,16 @@ td{
 }
 
 input {
-  width:70px;
-  margin:0;
+  width: 70px;
+  margin: 0;
 
 }
 
-#editBtn, .deleteInfo{
-  float:right;
-  width:20px;
-  display:inline;
+#editBtn,
+.deleteInfo {
+  float: right;
+  width: 20px;
+  display: inline;
   margin-right: 5px;
 }
 
