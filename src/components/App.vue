@@ -1,6 +1,6 @@
 <template>
 <div id="app">
-  <h5 id="headText">Create your own music list below</h5>
+  <h2 id="headText">Create your own music list below</h2>
 
   <div>
     <add-song v-on:addNewSong="updateList($event)"></add-song>
@@ -32,13 +32,13 @@ export default {
     updateList: function(e) {
 
       this.list.unshift({
-        songTitle: e.songTitle,
+        songAlbum: e.songAlbum,
         songArtist: e.songArtist,
         songGenre: e.songGenre,
         imageUrl: e.imageUrl
       });
 
-      this.moreInfo.songTitle = e.songTitle;
+      this.moreInfo.songAlbum = e.songAlbum;
       this.moreInfo.songArtist = e.songArtist;
       this.moreInfo.songGenre = e.songGenre;
       this.moreInfo.imageUrl = e.imageUrl;
@@ -49,24 +49,20 @@ export default {
     showInfo: function(i) {
 
       if (i !== "" && i !== undefined) {
-        this.moreInfo.songTitle = i.songTitle;
+        this.moreInfo.songAlbum = i.songAlbum;
         this.moreInfo.songArtist = i.songArtist;
         this.moreInfo.songGenre = i.songGenre;
         this.moreInfo.imageUrl = i.imageUrl;
         this.$refs.form.showObj()
 
       } else {
-        this.moreInfo.songTitle = "";
+        this.moreInfo.songAlbum = "";
         this.moreInfo.songArtist = "";
         this.moreInfo.songGenre = "";
         this.moreInfo.imageUrl = "";
         this.$refs.form.showObj()
 
       }
-
-
-
-
     },
 
   }, //methods
@@ -89,15 +85,15 @@ body {
   /* background: rgba(251, 225, 182,0.6); */
 }
 
-h5#headText {
+h2#headText {
   color: black;
   display: inline-block;
   /* border-bottom: 2px solid rgb(40, 83, 102); */
   text-align: center;
   position: relative;
   top: 40px;
-  width: 300px;
-  font-size: 0.8em;
+  /* width: 300px; */
+  /* font-size: 0.8em; */
   padding: 10px 0px;
   z-index: 2;
 }

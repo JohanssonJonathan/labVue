@@ -1,14 +1,14 @@
 <template>
 <div class="addContent">
 
-  <button v-if="bool" v-on:click="showAdd" class="add">Add Song</button>
-  <div v-else class="add">
-    <button v-on:click="publish" class="add">Publish</button>
-    <h3 id="x" @click="showAdd">x</h3>
+  <!-- <button v-if="bool" v-on:click="showAdd" class="add">Add Song</button> -->
+  <div class="add">
+    <button v-on:click="publish" class="add">Add Song</button>
+    <!-- <h3 id="x" @click="showAdd">x</h3> -->
   </div>
 
-  <div v-if="showAddSong" class="showAddSong">
-    <input type="text" placeholder="Song title..." v-model="currentSong.songTitle">
+  <div class="showAddSong">
+    <input type="text" placeholder="Album name..." v-model="currentSong.songAlbum">
     <input type="text" placeholder="Artist..." v-model="currentSong.songArtist">
     <input type="text" placeholder="Genre..." v-model="currentSong.songGenre">
     <input type="text" placeholder="Image URL" v-model="currentSong.imageUrl">
@@ -24,12 +24,12 @@ export default {
   data: function() {
 
     return {
-      fill:"",
+      fill: "",
       bool: true,
       showAddSong: false,
       songList: [],
       currentSong: {
-        songTitle: "",
+        songAlbum: "",
         songArtist: "",
         songGenre: "",
         imageUrl: ""
@@ -49,14 +49,14 @@ export default {
         this.bool = false;
 
       }
-      this.fill = ""
+      this.fill = "";
     },
     publish: function() {
 
-      if (this.currentSong.songTitle != "" && this.currentSong.songArtist != "" && this.currentSong.songGenre != "" && this.currentSong.imageUrl != "") {
+      if (this.currentSong.songAlbum != "" && this.currentSong.songArtist != "" && this.currentSong.songGenre != "" && this.currentSong.imageUrl != "") {
         this.$emit("addNewSong", this.currentSong)
         this.showAdd();
-        this.currentSong.songTitle = "";
+        this.currentSong.songAlbum = "";
         this.currentSong.songArtist = "";
         this.currentSong.songGenre = "";
         this.currentSong.imageUrl = "";
@@ -65,7 +65,6 @@ export default {
         this.fill = "You missed to fill out the form";
       }
     }
-
 
 
   }
