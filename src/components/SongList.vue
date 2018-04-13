@@ -5,24 +5,26 @@
   <table>
     <tr>
 
-      <td class="musicList">Title</td>
+      <td class="musicList">Album</td>
+      <td class="musicList">Artist</td>
       <td class="musicList">Genre</td>
-      <td class="musicList">Year</td>
-      <td></td>
+      <!-- <td></td> -->
       <!-- <td></td> -->
 
     </tr>
 
     <tr v-for="(i,index) in list" @click="show(i)" :class="{editing: i == editedList}">
-      <!-- <td>{{i.songTitle}}</td>
+      <!-- <td>{{i.songAlbum}}</td>
       <td>{{i.songArtist}}</td>
       <td>{{i.songGenre}}</td> -->
-      <div class="view">
-        {{i.songTitle}}
-      </div>
-      <div class="edit">
-        <input type="text" v-model="i.songTitle" />
-      </div>
+      <td>
+        <div class="view">
+          {{i.songAlbum}}
+        </div>
+        <!-- </td> -->
+        <div class="edit">
+          <input type="text" v-model="i.songAlbum" />
+        </div>
       </td>
       <td>
         <div class="view">
@@ -40,7 +42,7 @@
           <input type="text" v-model="i.songGenre" />
         </div>
       </td>
-      <td>
+      <td class="buttons">
         <div class="view">
           <img src="../../static/icons/edit.svg" @click="editData(i)" id="editBtn" />
         </div>
@@ -142,7 +144,7 @@ body {
   position: relative;
   top:160px;
   float: right;
-  right: 0;
+  right: 50px;
   margin: 0;
   padding: 0;
 
@@ -153,10 +155,7 @@ body {
   font-size: 0.9em;
 }
 
-.DivList ul{
-  list-style-type: none;
-  text-align: center;
-}
+
 
 
 #listText{
@@ -166,21 +165,24 @@ body {
 table{
   position: relative;
   color:rgba(0,0,0,0.7);
-  width: 600px;
+  width: 800px;
     right: 30px;
+    table-layout: fixed;
 }
 .musicList{
   border-bottom: 2px solid rgba(0,0,0,0.6);
+  font-weight: 700;
 
 }
 
-tr div{
-
+td {
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: left;
 }
 
-td{
-  width:10px;
-}
+
+
 
 </style>
 
@@ -191,12 +193,19 @@ td{
   display: none;
 } */
 
+div.view {
+  display: inline;
+  /* margin-left: 5px; */
+}
+
+
+
 .edit {
   display: none;
 }
 
 .editing .edit {
-  display: block;
+  display: inline;
 }
 
 .editing .view {
@@ -204,17 +213,31 @@ td{
 }
 
 input {
-  width: 70px;
-  margin: 0;
-
+  width: 120px;
+  /* margin: 0; */
 }
 
-#editBtn,
+/* #editBtn,
 .deleteInfo {
   float: right;
   width: 20px;
   display: inline;
   margin-right: 5px;
+} */
+
+.DivList ul {
+  list-style-type: none;
+  text-align: left;
 }
 
+img.deleteInfo,
+img#editBtn {
+  display: inline-block;
+  margin-left: 5px;
+  width: 20px;
+}
+
+.buttons {
+  margin-left: 200px;
+}
 </style>
