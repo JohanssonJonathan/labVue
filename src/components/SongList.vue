@@ -1,19 +1,21 @@
 <template >
 <div class="DivList">
 
-
   <table>
     <tr>
 
       <td class="musicList">Album</td>
       <td class="musicList">Artist</td>
       <td class="musicList">Genre</td>
-      <!-- <td></td> -->
-      <!-- <td></td> -->
-
+      <td></td>
+      <!-- <td class="buttonRow"></td> -->
     </tr>
+  </table>
 
-    <tr v-for="(i,index) in list" @click="show(i)" :class="{editing: i == editedList}">
+  <table id="innehall">
+
+    <tr v-for="(i,index) in list" @click="show(i, index)" :class="{editing: i == editedList}">
+      <!-- <div class="scrollTable"> -->
       <!-- <td>{{i.songAlbum}}</td>
       <td>{{i.songArtist}}</td>
       <td>{{i.songGenre}}</td> -->
@@ -51,8 +53,11 @@
         </div>
         <img src="../../static/icons/rubbish-bin.svg" class="deleteInfo" @click="removeData(i,index)" />
       </td>
+      <!-- </div> -->
     </tr>
+
   </table>
+
 </div>
 </template>
 
@@ -86,12 +91,14 @@ export default {
       this.editedList = i;
     },
 
-    show(i) {
+    show(i, index) {
 
+      let val = [i, index]
+
+      console.log(val)
       if (this.showInformation) {
-        this.$emit("showInfo", i)
+        this.$emit("showInfo", val)
 
-        console.log("show")
       }
 
       this.showInformation = true;
@@ -141,12 +148,11 @@ body {
 }
 
 .DivList{
-  position: relative;
-  top:160px;
-  float: right;
-  right: 50px;
-  margin: 0;
-  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  /* height: 350px; */
 
 }
 .nr{
@@ -155,22 +161,34 @@ body {
   font-size: 0.9em;
 }
 
+tbody {
 
+  background: red;
+
+}
 
 
 #listText{
-  padding:5px;
 }
 
 table{
+  top:20px;
   position: relative;
-  color:rgba(0,0,0,0.7);
-  width: 800px;
-    right: 30px;
+  color:rgba(255,255,255,0.4);
     table-layout: fixed;
+    margin-bottom: 20px;
+    padding:0 40px;
+    width: 85%;
+    /* margin: 0 auto; */
+    left:15%;
+
+
 }
+
+
+
 .musicList{
-  border-bottom: 2px solid rgba(0,0,0,0.6);
+  border-bottom: 2px solid rgba(255,255,255,0.6);
   font-weight: 700;
 
 }
@@ -179,10 +197,43 @@ td {
   overflow: hidden;
   white-space: nowrap;
   text-align: left;
+  padding:5px 10px;
+  /* max-width: 100px; */
+
+  cursor: pointer;
+  /* position: relative; */
+  /* position: absolute; */
+
 }
 
 
+td:hover {
+  text-decoration: underline;
+  background: rgb(52, 55, 52);
 
+}
+td:hover:nth-child(4) {
+  text-decoration: none;
+  background: rgba(52, 55, 52,0);
+
+}
+
+td.buttons img{
+  transition-property: transform;
+  transition-duration: 0.3s;
+}
+
+td.buttons img:first-child:hover{
+  transform: rotate(20deg);
+}
+
+td.buttons img:nth-child(2):hover{
+  transform: rotate(20deg);
+}
+
+td.buttons img:last-child:hover{
+  transform: rotate(20deg);
+}
 
 </style>
 
@@ -196,6 +247,10 @@ td {
 div.view {
   display: inline;
   /* margin-left: 5px; */
+  /* right: 20px; */
+  /* position: absolute;
+  top: 0; */
+  /* left: 10px; */
 }
 
 
@@ -205,7 +260,7 @@ div.view {
 }
 
 .editing .edit {
-  display: inline;
+  display: inline
 }
 
 .editing .view {
@@ -213,7 +268,7 @@ div.view {
 }
 
 input {
-  width: 120px;
+  width: 220px;
   /* margin: 0; */
 }
 
@@ -225,19 +280,33 @@ input {
   margin-right: 5px;
 } */
 
-.DivList ul {
-  list-style-type: none;
-  text-align: left;
-}
-
-img.deleteInfo,
 img#editBtn {
+
   display: inline-block;
-  margin-left: 5px;
+  margin-left: 4px;
   width: 20px;
 }
 
-.buttons {
-  margin-left: 200px;
+img.deleteInfo {
+  display: inline-block;
+  margin-left: 4px;
+  /* margin-left: -10px; */
+  width: 20px;
+}
+
+.buttonRow {
+  /* position: relative; */
+  /* right: 0; */
+  /* margin-left: 200px; */
+}
+
+td.buttons {
+  position: absolute;
+  /* position: relative; */
+  /*   padding: 0; */
+  opacity: 0.4;
+  /* right: 5px; */
+  z-index: 1000;
+  /* margin-right: 200px; */
 }
 </style>

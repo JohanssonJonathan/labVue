@@ -52,7 +52,7 @@ export default {
       this.fill = "";
     },
     publish: function() {
-
+      console.log("hej")
       if (this.currentSong.songAlbum != "" && this.currentSong.songArtist != "" && this.currentSong.songGenre != "" && this.currentSong.imageUrl != "") {
         this.$emit("addNewSong", this.currentSong)
         this.showAdd();
@@ -85,16 +85,15 @@ div.addContent{
 
 div.showAddSong{
   position: absolute;
-  top:60px;
-  width: 75%;
+  width: 90%;
   margin: 0 auto;
+
   right: 0;
   left:0;
   height: 50px;
   display: flex;
   justify-content: center;
   flex-direction: row;
-  border-bottom:3px solid rgb(5, 159, 92);
 }
 
 #x{
@@ -104,30 +103,36 @@ div.showAddSong{
   width: 20px;
   height: 20px;
   bottom:5px;
-  color: rgba(0,0,0,0.6);
+  color: rgba(255,255,255,0.6);
   cursor: pointer;
 }
 #fill{
   position: absolute;
+  color:rgba(255,255,255,0.8);
   top:130px;
+  z-index: 500;
 }
 
 div.showAddSong input{
+  color:rgba(255,255,255,0.7);
   z-index: 5;
   width:10%;
-  margin:10px  ;
+  margin-top: 0px;
   border:none;
   font-size: 0.9em;
   text-align: center;
-  padding:5px;
-
+  background: rgb(31, 33, 31,0);
+  border-bottom: 2px solid rgba(255,255,255,0.7);
 }
 
 .add{
   position: relative;
 }
 
-::placeholder {
+::placeholder{
+  color:rgba(255,255,255,0.5);
+  text-align: center;
+
 }
 
 button#publish{
@@ -153,15 +158,15 @@ button.add{
   outline: none;
 
   position: relative;
-  top:-20px;
+  top:-40px;
   font-size: 0.8em;
   background: rgba(255,255,255,0);
   z-index: 2;
   box-shadow: 0px -7px rgb(0, 185, 104);
-  width: 100px;
+  width: 80px;
   border-radius: 100%;
-  height: 100px;
+  height: 80px;
   border:none;
-  color:rgba(0,0,0,0.7);
+  color:rgba(255,255,255,0.7);
 }
 </style>
