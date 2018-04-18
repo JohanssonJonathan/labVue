@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 node_modules
 node_modules/
 /node_modules
+=======
+# Ignore everything under node_modules
+node_modules/*
+>>>>>>> 412f6e7ede815039ecf677d80024cb3eb4c207fd
