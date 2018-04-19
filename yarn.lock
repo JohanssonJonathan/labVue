@@ -5169,7 +5169,7 @@ poi-load-config@^1.1.6:
     postcss-load-config "^1.2.0"
     use-config "^2.0.0"
 
-poi-preset-bundle-report@^2.0.0:
+poi-preset-bundle-report@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/poi-preset-bundle-report/-/poi-preset-bundle-report-2.0.2.tgz#a09e139ac0137ad5d7b2a1d15b77b01c06a92259"
   dependencies:
