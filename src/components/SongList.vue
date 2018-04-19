@@ -51,7 +51,7 @@
         <div class="edit">
           <img src="../../static/icons/checked.svg" @click="saveData(i)" class="deleteInfo" />
         </div>
-        <img v-bind:src="require('../../docs/assets/images/rubbish-bin.c01078bc.svg')" class="deleteInfo" @click="removeData(i,index)" />      </td>
+        <img src="./assets/images/rubbish-bin.c01078bc.svg" class="deleteInfo" @click="removeData(i,index)" />
       <!-- </div> -->
     </tr>
 
