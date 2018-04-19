@@ -46,12 +46,15 @@
       </td>
       <td class="buttons">
         <div class="view">
-          <img v-bind:src="edImg" @click="editData(i)" id="editBtn" />
+          <img src="https://firebasestorage.googleapis.com/v0/b/landingpage-46d25.appspot.com/o/edit.svg?alt=media&token=778da710-a707-4cf5-b083-356b3bdd7661" @click="editData(i)" id="editBtn" />
+
         </div>
         <div class="edit">
-          <img src="../../static/icons/checked.svg" @click="saveData(i)" class="deleteInfo" />
+          <img src="https://firebasestorage.googleapis.com/v0/b/landingpage-46d25.appspot.com/o/checked.svg?alt=media&token=cd2bd6d3-adc3-4f13-b4b0-67534388900a" @click="saveData(i)" class="deleteInfo" />
         </div>
-        <img src="./assets/images/rubbish-bin.c01078bc.svg" class="deleteInfo" @click="removeData(i,index)" />
+        <img src="https://firebasestorage.googleapis.com/v0/b/landingpage-46d25.appspot.com/o/rubbish-bin.svg?alt=media&token=b310ee71-3961-459e-8afc-ec3285231b76" class="deleteInfo" @click="removeData(i,index)" />
+      </td>
+
       <!-- </div> -->
     </tr>
 
