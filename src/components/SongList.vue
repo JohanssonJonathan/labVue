@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import editImage from '../../docs/assets/images/edit.d803827d.svg';
+import editImage from '../../static/icons/edit.svg';
 
 // import AddImage from './AddImage.vue';
 // import SongList from './SongList.vue';
