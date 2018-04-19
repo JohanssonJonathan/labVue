@@ -67,6 +67,7 @@ export default {
 
 
 
+
       if (changeNr === "added") {
         this.newNr = 0;
 
@@ -97,19 +98,18 @@ export default {
       this.show.songArtist = this.moreInfo.songArtist;
       this.show.songGenre = this.moreInfo.songGenre;
       this.show.imageUrl = this.moreInfo.imageUrl;
+
     },
     PicClick: function(i, index) {
       let val = [i, index]
 
       this.$emit("updateNr", val)
       this.newNr = val[1]
-      console.log(this.list.length)
       for (let z = 0; z < this.list.length; z++) {
         if (z === index) {
           this.$refs["0"][z].style.transform = "scale(1.4)";
           this.$refs["0"][z].style.zIndex = "100";
 
-          console.log(this.$refs["0"][z + 1])
 
         } else {
           this.$refs["0"][z].style.transform = "scale(1)";
@@ -195,6 +195,8 @@ export default {
 
 img {
   position: relative;
+  cursor: pointer;
+
   /* border: 2px solid black; */
   width: 300px;
   height: 250px;
@@ -209,6 +211,8 @@ img {
 }
 
 .light {
+  cursor: pointer;
+
   position: absolute;
   width: 350px;
   height: 300px;

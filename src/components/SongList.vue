@@ -8,17 +8,13 @@
       <td class="musicList">Artist</td>
       <td class="musicList">Genre</td>
       <td></td>
-      <!-- <td class="buttonRow"></td> -->
     </tr>
   </table>
 
   <table id="innehall">
 
     <tr v-for="(i,index) in list" @click="show(i, index)" :class="{editing: i == editedList}">
-      <!-- <div class="scrollTable"> -->
-      <!-- <td>{{i.songAlbum}}</td>
-      <td>{{i.songArtist}}</td>
-      <td>{{i.songGenre}}</td> -->
+
       <td>
         <div class="view">
           {{i.songAlbum}}
@@ -71,15 +67,12 @@ import editImage from '../../docs/assets/images/edit.d803827d.svg';
 
 export default {
   name: "add",
-  props: ["list"],
+  props: ["list", "nr"],
   components: {
-    // "add-song": AddSong,
-    // "add-image": AddImage,
-    // "song-list": SongList,
+
   },
   data: function() {
     return {
-      // editMode: false,
       editedList: null,
       showInformation: true,
       edImg: editImage,
@@ -87,7 +80,6 @@ export default {
   }, //data
   methods: {
     saveData(i) {
-      console.log(this.editedList)
       this.editedList = i;
       this.editData();
     },
@@ -99,22 +91,23 @@ export default {
     show(i, index) {
 
       let val = [i, index]
-
-      console.log(val)
       if (this.showInformation) {
         this.$emit("showInfo", val)
 
       }
-
       this.showInformation = true;
-
 
     },
     removeData(i, index) {
-      console.log("delete")
+
 
       this.showInformation = false;
 
+
+      if (this.nr === this.list.length - 1) {
+
+        this.$emit("showInfo", this.list.length - 2)
+      }
 
       this.list.splice(index, 1);
 
@@ -128,7 +121,6 @@ export default {
 
       } else {
         this.$emit("showInfo", this.list[index - 1])
-
       }
 
     },

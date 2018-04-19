@@ -5,7 +5,7 @@
   <div>
     <add-song v-on:addNewSong="updateList($event)"></add-song>
     <show-info v-bind:moreInfo="moreInfo" v-bind:list="list" ref="form" v-on:updateNr="updateNr($event)" v-bind:nr="nr"></show-info>
-    <song-list v-bind:list="list" v-on:showInfo="showInfo($event)"></song-list>
+    <song-list v-bind:list="list" v-bind:nr="nr" v-on:showInfo="showInfo($event)"></song-list>
   </div>
 </div>
 </template>
@@ -29,6 +29,8 @@ export default {
       list: defaultList,
       moreInfo: {},
       nr: 0,
+      deleteKnappBool: true,
+      varv: 0,
     }
   }, //data
   methods: {
@@ -39,7 +41,7 @@ export default {
         songGenre: e.songGenre,
         imageUrl: e.imageUrl
       });
-      console.log(this.list)
+
       this.moreInfo.songAlbum = e.songAlbum;
       this.moreInfo.songArtist = e.songArtist;
       this.moreInfo.songGenre = e.songGenre;
@@ -51,8 +53,28 @@ export default {
     },
     showInfo: function(val) {
 
-      this.nr = val[1]
-      console.log(this.nr)
+      this.varv++;
+
+      if (typeof val === "number") {
+        this.nr = val;
+        this.deleteKnappBool = false;
+      }
+      if (this.deleteKnappBool) {
+
+        if (val[1] !== undefined) {
+          if (typeof val === "object") {
+            this.nr = val[1]
+
+          }
+        }
+      } else if (this.varv === 2) {
+        this.deleteKnappBool = true;
+
+        this.varv = 0;
+      }
+
+
+
       if (val[0] !== "" && val[0] !== undefined) {
         this.moreInfo.songAlbum = val[0].songAlbum;
         this.moreInfo.songArtist = val[0].songArtist;
