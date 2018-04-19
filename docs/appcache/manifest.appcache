@@ -1,20 +1,20 @@
 CACHE MANIFEST
-#ver:2018-4-19 13:39:28
+#ver:2018-4-19 15:04:28
 #plugin:4.9.0
 
 CACHE:
-/client.3e69e747.js
+/client.a3370c7b.js
 /vendor.3fa8c5d5.js
 /manifest.95292176.js
-/client.54203c45.css
+/client.aa6716f4.css
 /vendor.dc3c9030.css
 /defaultList.json
 /icons/checked.svg
-/icons/edit.svg
-/icons/rubbish-bin.svg
 /icons/android-chrome-192x192.png
 /favicon.ico
+/icons/edit.svg
 /icons/android-chrome-512x512.png
+/icons/rubbish-bin.svg
 /manifest.json
 /
 

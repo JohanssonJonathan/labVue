@@ -52,7 +52,6 @@ export default {
       this.fill = "";
     },
     publish: function() {
-      console.log("hej")
       if (this.currentSong.songAlbum != "" && this.currentSong.songArtist != "" && this.currentSong.songGenre != "" && this.currentSong.imageUrl != "") {
         this.$emit("addNewSong", this.currentSong)
         this.showAdd();
