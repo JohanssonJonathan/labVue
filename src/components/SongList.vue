@@ -46,7 +46,7 @@
       </td>
       <td class="buttons">
         <div class="view">
-          <img src="../../docs/assets/images/edit.d803827d.svg" @click="editData(i)" id="editBtn" />
+          <img src="../../static/icons/edit.svg" @click="editData(i)" id="editBtn" />
         </div>
         <div class="edit">
           <img src="../../static/icons/checked.svg" @click="saveData(i)" class="deleteInfo" />
