@@ -64,9 +64,8 @@ export default {
         this.fill = "You missed to fill out the form";
       }
     }
+  },
 
-
-  }
 }
 </script>
 
