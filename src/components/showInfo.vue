@@ -67,7 +67,6 @@ export default {
 
 
 
-
       if (changeNr === "added") {
         this.newNr = 0;
 
@@ -125,6 +124,11 @@ export default {
 
 
 
+  },
+
+  mounted() {
+    this.$refs["0"][0].style.transform = "scale(1.4)";
+    this.$refs["0"][0].style.zIndex = "100";
   }
 }
 </script>

@@ -60,8 +60,6 @@
 </template>
 
 <script>
-import editImage from '../../docs/assets/images/edit.d803827d.svg';
-
 // import AddImage from './AddImage.vue';
 // import SongList from './SongList.vue';
 
@@ -75,7 +73,6 @@ export default {
     return {
       editedList: null,
       showInformation: true,
-      edImg: editImage,
     }
   }, //data
   methods: {
@@ -124,7 +121,8 @@ export default {
       }
 
     },
-  } //methods
+  }, //methods
+
 }
 </script>
 

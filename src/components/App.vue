@@ -5,7 +5,7 @@
   <div>
     <add-song v-on:addNewSong="updateList($event)"></add-song>
     <show-info v-bind:moreInfo="moreInfo" v-bind:list="list" ref="form" v-on:updateNr="updateNr($event)" v-bind:nr="nr"></show-info>
-    <song-list v-bind:list="list" v-bind:nr="nr" v-on:showInfo="showInfo($event)"></song-list>
+    <song-list v-bind:list="list" v-bind:nr="nr" v-on:showInfo="showInfo"></song-list>
   </div>
 </div>
 </template>
@@ -94,9 +94,12 @@ export default {
     },
     updateNr: function(i) {
       this.nr = i[1]
-    }
+    },
+
 
   }, //methods
+
+
 }
 </script>
 
